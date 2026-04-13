@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战术人格分析系统 / Tactical Profile Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { border-radius: 0 !important; font-family: 'Segoe UI', 'PingFang SC', sans-serif !important; }
+        body { background-color: #000000; color: #FFFFFF; overflow: hidden; }
+
+        /* 轮播图动画 */
+        .slide { opacity: 0; transition: opacity 1.5s ease-in-out; position: absolute; inset: 0; transform: scale(1.1); transition: opacity 1.5s ease-in-out, transform 10s linear; }
+        .slide.active { opacity: 1; transform: scale(1.0); }
+
+        /* 渐变遮罩 */
+        .hero-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 40%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.9) 100%), linear-gradient(90deg, rgba(0,0,0,0.6) 0%, transparent 100%); }
+
+        /* 扫描线 */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 69, 0, 0.15);
+            position: absolute;
+            animation: scanline 6s linear infinite;
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
+        }
+
+        /* 强调字体 */
+        .bf-font { font-style: italic; font-weight: 900; letter-spacing: -0.05em; text-transform: uppercase; }
+
+        /* 按钮悬停效果 */
+        .btn-glitch:hover {
+            box-shadow: -3px 0 #00fff2, 3px 0 #ff00ea;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 w-full bg-transparent z-[100] p-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-[#FF4500] flex items-center justify-center text-black bf-font text-xl">BF</div>
+                <div class="hidden sm:block">
+                    <h1 class="bf-font text-lg leading-none">Battlefield</h1>
+                    <p class="text-[8px] tracking-[0.4em] text-zinc-400 uppercase">Personality Analysis System</p>
+                </div>
+            </div>
+<!--            <div class="flex gap-8 text-[10px] font-bold uppercase tracking-widest text-zinc-400">-->
+<!--                <span class="hover:text-white cursor-pointer transition-colors">Tactical Data</span>-->
+<!--                <span class="hover:text-white cursor-pointer transition-colors">Network Status</span>-->
+<!--                <span class="text-[#FF4500]">Secure Connection</span>-->
+<!--            </div>-->
+        </div>
+    </nav>
+
+    <!-- 主展示区 -->
+    <section class="relative h-screen w-full flex items-center overflow-hidden">
+        <!-- 自动轮播背景 -->
+        <div id="carousel" class="absolute inset-0 z-0">
+            <!-- 突击兵 -->
+            <div class="slide active bg-center bg-cover" style="background-image: url('https://drop-assets.ea.com/images/58j9rF076d6KcqqIGpu1MM/53f881422b1525fa5b77088dccd407c5/battlefield-6-assault-class-16x9.jpg?im=Resize=(3840)&q=80')"></div>
+            <!-- 侦察兵 -->
+            <div class="slide bg-center bg-cover" style="background-image: url('https://drop-assets.ea.com/images/6Pbmoywg6aD1tkJtBJaIGJ/0c9b29d42f82182358d70121fa48433c/battlefield-6-recon-class-16x9.jpg?im=Resize=(3840)&q=80')"></div>
+            <!-- 支援兵 -->
+            <div class="slide bg-center bg-cover" style="background-image: url('https://drop-assets.ea.com/images/5VkcN5VOKKkhCoNOkXMd3G/4106bde003eac3706ef640e8c38050c1/battlefield-6-support-class-16x9.jpg?im=Resize=(3840)&q=80')"></div>
+            <!-- 工程兵 -->
+            <div class="slide bg-center bg-cover" style="background-image: url('https://drop-assets.ea.com/images/WGxOY1yQ5qnCtGl0kMO7q/4b35a2698f7fe7f9a0268544d814b235/battlefield-6-engineer-class-16x9.jpg?im=Resize=(3840)&q=80')"></div>
+
+            <div class="hero-overlay absolute inset-0"></div>
+            <div class="scanline"></div>
+        </div>
+
+        <!-- 主文案 -->
+        <div class="relative z-20 px-6 sm:px-20 max-w-5xl">
+            <div class="mb-4 flex items-center gap-3">
+                <div class="w-2 h-2 bg-[#FF4500] animate-pulse"></div>
+                <p class="text-[#FF4500] font-black tracking-[0.4em] uppercase text-xs">Unauthorized Access Detected</p>
+            </div>
+
+            <h2 class="bf-font text-6xl md:text-9xl leading-[0.85] mb-8">Battlefield<br><span class="text-zinc-500">BF - TCPI</span>
+            </h2>
+
+            <p class="text-zinc-300 text-sm md:text-base uppercase tracking-[0.2em] mb-12 max-w-xl leading-relaxed opacity-80">
+                通过四维人格模型评估，在 BF-TCPI V1.1 中定义您的作战位置。
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="BFTCPI.html">
+                <button class="btn-glitch bg-[#FF4500] hover:bg-white hover:text-black text-black font-black px-12 py-5 uppercase tracking-[0.2em] transition-all active:scale-95 text-xs flex items-center gap-4">
+                    <span>Initialize Profile Assessment</span>
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                </button>
+                    </a>
+<!--                <button class="border border-zinc-700 hover:border-white px-8 py-5 uppercase tracking-[0.2em] transition-all text-[10px] text-zinc-400 hover:text-white">-->
+<!--                    Access Archives-->
+<!--                </button>-->
+            </div>
+        </div>
+
+        <!-- 侧边兵种指示器 -->
+        <div class="absolute right-10 bottom-32 z-30 hidden md:flex flex-col gap-6 items-end">
+            <div class="indicator text-right transition-all opacity-40 hover:opacity-100" data-idx="0">
+                <p class="text-[8px] font-bold text-zinc-500 uppercase">Class 01</p>
+                <p class="bf-font text-xl">Assault</p>
+            </div>
+            <div class="indicator text-right transition-all opacity-40 hover:opacity-100" data-idx="1">
+                <p class="text-[8px] font-bold text-zinc-500 uppercase">Class 02</p>
+                <p class="bf-font text-xl">Recon</p>
+            </div>
+            <div class="indicator text-right transition-all opacity-40 hover:opacity-100" data-idx="2">
+                <p class="text-[8px] font-bold text-zinc-500 uppercase">Class 03</p>
+                <p class="bf-font text-xl">Support</p>
+            </div>
+            <div class="indicator text-right transition-all opacity-40 hover:opacity-100" data-idx="3">
+                <p class="text-[8px] font-bold text-zinc-500 uppercase">Class 04</p>
+                <p class="bf-font text-xl">Engineer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部免责声明 -->
+    <footer class="fixed bottom-0 w-full z-50 p-6 bg-gradient-to-t from-black to-transparent">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-6">
+            <div class="max-w-2xl">
+                <div class="flex items-center gap-4 mb-3">
+                    <span class="text-[10px] font-bold text-[#FF4500] uppercase tracking-widest">Legal Disclaimer</span>
+                    <div class="h-[1px] w-20 bg-zinc-800"></div>
+                </div>
+                <p class="text-[9px] text-zinc-500 uppercase leading-relaxed text-justify opacity-60">
+                    本系统仅供娱乐参考。所有的心理评估结果均由模拟算法生成，不构成真实的军事或职业建议。Battlefield 2042 及其相关资产的所有权归属于 Electronic Arts Inc. 所有。您的本地访问受加密协议保护。
+                </p>
+            </div>
+            <div class="flex items-center gap-8">
+                <div class="text-right">
+                    <p class="text-[8px] text-zinc-600 uppercase font-bold tracking-tighter">Connection Status</p>
+                    <p class="text-[10px] font-mono text-green-900">AI_GENERATED</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-[8px] text-zinc-600 uppercase font-bold tracking-tighter">Current Location</p>
+                    <p class="text-[10px] font-mono text-zinc-400">V1.1</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator');
+
+        function updateCarousel() {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === slideIndex);
+            });
+            indicators.forEach((ind, i) => {
+                ind.style.opacity = i === slideIndex ? '1' : '0.4';
+                ind.style.transform = i === slideIndex ? 'translateX(-10px)' : 'translateX(0)';
+                ind.style.color = i === slideIndex ? '#FF4500' : 'white';
+            });
+        }
+
+        // 自动轮播
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % slides.length;
+            updateCarousel();
+        }, 6000);
+
+        // 点击指示器切换
+        indicators.forEach((ind, i) => {
+            ind.addEventListener('click', () => {
+                slideIndex = i;
+                updateCarousel();
+            });
+        });
+
+        // 初始化指示器状态
+        updateCarousel();
+    </script>
+</body>
+</html>
